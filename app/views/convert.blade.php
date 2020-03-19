@@ -20,7 +20,7 @@
 				<option val="{{$fromCurrency->from}}">{{$fromCurrency->from}}</option>
                 @endforeach
 			</select> <br />
-        <label for="to">Currency to convert from:</label>
+        <label for="to">Currency to convert to:</label>
 			<select id="to" name="to" class="submitAfterChange">
                 @foreach ($toCurrencies as $toCurrency)
                     <option val="{{$toCurrency->to}}">{{$toCurrency->to}}</option>
