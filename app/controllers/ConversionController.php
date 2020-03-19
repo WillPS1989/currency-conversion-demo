@@ -2,7 +2,7 @@
 
 class ConversionController extends \BaseController {
 
-	public function conversion()
+	public function ajaxConversion()
 	{
 		$value = (double) Input::get('value');
 		$from = Input::get('from');

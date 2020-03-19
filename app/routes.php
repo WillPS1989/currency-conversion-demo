@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'HomeController@showConvertForm');
-Route::post('/conversion', 'ConversionController@conversion');
+Route::post('/conversion', 'ConversionController@ajaxConversion');

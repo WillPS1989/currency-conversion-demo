@@ -16,13 +16,15 @@
 		<label for="value">Value to convert</label> <input type="text" id="value" name="value" /> <br />
 		Currency to convert from: 
 			<select id="from" name="from">
-				<option val="GBP">GBP</option>
-				<option val="USD">USD</option>
+                @foreach ($fromCurrencies as $fromCurrency)
+				<option val="{{$fromCurrency->from}}">{{$fromCurrency->from}}</option>
+                @endforeach
 			</select> <br />
 		Currency to convert to: 
 			<select id="to" name="to">
-				<option val="GBP">GBP</option>
-				<option val="USD">USD</option>
+                @foreach ($toCurrencies as $toCurrency)
+                    <option val="{{$toCurrency->to}}">{{$toCurrency->to}}</option>
+                @endforeach
 			</select> <br />
         <input type="submit" />
 	</form>
