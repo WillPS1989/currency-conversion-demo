@@ -4,7 +4,7 @@ class ConversionController extends \BaseController {
 
 	public function ajaxConversion()
 	{
-		$value = (double) Input::get('value');
+		$value = (double) preg_replace("/[^0-9.]/", "", Input::get('value')); //remove non-numeric characters
 		$from = Input::get('from');
 		$to = Input::get('to');
 
@@ -21,7 +21,7 @@ class ConversionController extends \BaseController {
         }
 
         $convertedValue = $value * $conversionRate;
-        return ['success' => 'true', 'convertedValue' => $convertedValue, 'conversionRate' => $conversionRate];
+        return ['success' => 'true', 'convertedValue' => $convertedValue, 'conversionRate' => $conversionRate, 'originalValue' => $value, 'originalCurrency' => $from, 'convertedCurrency' => $to];
 	}
 
 }
