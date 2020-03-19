@@ -1,14 +1,20 @@
 <?php
 
 class ConversionController extends \BaseController {
-
+    /**
+     * Take POST variables 'value', 'from' and 'to' currencies and do conversion
+     *
+     * @return array
+     */
 	public function ajaxConversion()
 	{
-		$value = (double) preg_replace("/[^0-9.]/", "", Input::get('value')); //remove non-numeric characters
+        //remove non-numeric characters
+		$value = (double) preg_replace("/[^0-9.]/", "", Input::get('value'));
 		$from = Input::get('from');
 		$to = Input::get('to');
 
 		if ($from==$to){
+		    //same currency given, no conversion
 		    $conversionRate = 1;
         } else {
             $fxRate = FXRates::getByFromTo($from, $to);
@@ -21,7 +27,14 @@ class ConversionController extends \BaseController {
         }
 
         $convertedValue = $value * $conversionRate;
-        return ['success' => 'true', 'convertedValue' => $convertedValue, 'conversionRate' => $conversionRate, 'originalValue' => $value, 'originalCurrency' => $from, 'convertedCurrency' => $to];
+        return [
+            'success' => 'true',
+            'convertedValue' => $convertedValue,
+            'conversionRate' => $conversionRate,
+            'originalValue' => $value,
+            'originalCurrency' => $from,
+            'convertedCurrency' => $to
+        ];
 	}
 
 }

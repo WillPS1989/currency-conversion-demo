@@ -1,7 +1,12 @@
 <?php
 
 class HomeController extends BaseController {
-
+    /**
+     * Homepage/form
+     *
+     * @return View
+     * @throws Exception
+     */
 	public function showConvertForm()
 	{
         $fromCurrencies = FXRates::getCurrencies('from');
