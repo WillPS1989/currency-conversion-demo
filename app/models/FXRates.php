@@ -11,7 +11,7 @@ class FXRates extends \Eloquent {
      */
     public static function getByFromTo($from, $to)
     {
-        return self::select('conversion_rate')->whereRaw('`from` = "' . $from  . '" and `to` = "' .$to. '"')->first();
+        return self::select('conversion_rate')->where(['from' => $from, 'to' => $to])->first();
     }
 
     /**
